@@ -1,9 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import data from '../data/data.json';
+import marketplace from '../data/marketplace.json';
 
 const airItems     = data.filter((d) => d.transportMode === 'Air');
 const surfaceItems = data.filter((d) => d.transportMode === 'Surface');
+
+const amazonItems   = marketplace.filter((m) => m.platformName === 'Amazon India');
+const flipkartItems = marketplace.filter((m) => m.platformName === 'Flipkart');
+const otherItems    = marketplace.filter((m) => !['Amazon India', 'Flipkart'].includes(m.platformName));
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -158,6 +163,91 @@ const faqSchema = {
           <p class="text-sm text-gray-500">The higher of volumetric vs. actual weight is your billable weight.</p>
         </div>
       </div>
+    </section>
+
+    <!-- Marketplace Fee Calculators -->
+    <section class="mb-16" id="marketplace">
+      <div class="mb-8 text-center">
+        <h2 class="text-2xl font-bold text-white">Marketplace Seller Fee Calculators</h2>
+        <p class="mt-2 text-gray-400">Find your exact net payout after platform fees for Amazon, Flipkart, Myntra & Nykaa.</p>
+      </div>
+
+      <!-- Amazon India -->
+      <div class="mb-8">
+        <h3 class="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+          <span class="rounded-lg border border-orange-500/20 bg-orange-500/10 px-3 py-1 text-sm text-orange-400">📦 Amazon India</span>
+        </h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {amazonItems.map((item) => (
+            <a href={`/fees/${item.slug}`}
+              class="group rounded-xl border border-gray-800 bg-gray-900 p-5 transition-all duration-200 hover:border-orange-500/40 hover:bg-gray-800">
+              <div class="mb-3 flex items-center justify-between">
+                <span class="text-sm font-semibold text-white">{item.category}</span>
+                <span class="rounded-full border border-orange-500/20 bg-orange-500/10 px-2 py-0.5 text-xs text-orange-400">{item.referralFeePercent}%</span>
+              </div>
+              <p class="mb-3 text-xs leading-relaxed text-gray-500 line-clamp-2">{item.metaDescription}</p>
+              <span class="text-xs text-blue-400 transition-colors group-hover:text-blue-300">Calculate →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Flipkart -->
+      <div class="mb-8">
+        <h3 class="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+          <span class="rounded-lg border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-sm text-blue-400">🛒 Flipkart</span>
+        </h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {flipkartItems.map((item) => (
+            <a href={`/fees/${item.slug}`}
+              class="group rounded-xl border border-gray-800 bg-gray-900 p-5 transition-all duration-200 hover:border-blue-500/40 hover:bg-gray-800">
+              <div class="mb-3 flex items-center justify-between">
+                <span class="text-sm font-semibold text-white">{item.category}</span>
+                <span class="rounded-full border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 text-xs text-blue-400">{item.referralFeePercent}%</span>
+              </div>
+              <p class="mb-3 text-xs leading-relaxed text-gray-500 line-clamp-2">{item.metaDescription}</p>
+              <span class="text-xs text-blue-400 transition-colors group-hover:text-blue-300">Calculate →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Myntra & Nykaa -->
+      <div>
+        <h3 class="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+          <span class="rounded-lg border border-pink-500/20 bg-pink-500/10 px-3 py-1 text-sm text-pink-400">✨ Fashion & Beauty</span>
+        </h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {otherItems.map((item) => (
+            <a href={`/fees/${item.slug}`}
+              class="group rounded-xl border border-gray-800 bg-gray-900 p-5 transition-all duration-200 hover:border-pink-500/40 hover:bg-gray-800">
+              <div class="mb-3 flex items-center justify-between">
+                <span class="text-sm font-semibold text-white">{item.platformName}</span>
+                <span class="rounded-full border border-pink-500/20 bg-pink-500/10 px-2 py-0.5 text-xs text-pink-400">{item.referralFeePercent}%</span>
+              </div>
+              <p class="mb-1 text-xs text-gray-500">{item.category}</p>
+              <p class="mb-3 text-xs leading-relaxed text-gray-600 line-clamp-2">{item.metaDescription}</p>
+              <span class="text-xs text-blue-400 transition-colors group-hover:text-blue-300">Calculate →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="mb-16">
+      <h2 class="mb-6 text-xl font-bold text-white">Shipping Resources</h2>
+      <a
+        href="/blog/what-is-volumetric-weight"
+        class="group flex items-center justify-between rounded-xl border border-gray-800 bg-gray-900 p-6 transition-all duration-200 hover:border-blue-500/40 hover:bg-gray-800"
+      >
+        <div>
+          <span class="mb-2 inline-block rounded-full border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 text-xs text-blue-400">Guide</span>
+          <h3 class="mt-1 font-semibold text-white">What is Volumetric Weight in Shipping? A Complete Guide</h3>
+          <p class="mt-1 text-sm text-gray-500">Learn the formula, courier divisors, and 5 tips to reduce your shipping costs.</p>
+        </div>
+        <span class="ml-6 shrink-0 text-blue-400 transition-colors group-hover:text-blue-300">Read →</span>
+      </a>
     </section>
 
     <!-- FAQ Section -->

@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import marketplace from '../../data/marketplace.json';
+
+export async function getStaticPaths() {
+  return marketplace.map((item) => {
+    const related = marketplace
+      .filter((d) => d.slug !== item.slug)
+      .sort((a, b) => {
+        const aScore =
+          (a.platformName === item.platformName ? 2 : 0) +
+          (a.category === item.category ? 1 : 0);
+        const bScore =
+          (b.platformName === item.platformName ? 2 : 0) +
+          (b.category === item.category ? 1 : 0);
+        return bScore - aScore;
+      })
+      .slice(0, 3);
+
+    return {
+      params: { slug: item.slug },
+      props: { item, related },
+    };
+  });
+}
+
+const { item, related } = Astro.props;
+const {
+  platformName,
+  category,
+  referralFeePercent,
+  minimumReferralFee,
+  closingFee,
+  feeNote,
+  h1Title,
+  metaDescription,
+  seoParagraph,
+  slug,
+} = item;
+
+const platformColors: Record<string, string> = {
+  'Amazon India': 'orange',
+  'Flipkart':     'blue',
+  'Myntra':       'pink',
+  'Nykaa':        'rose',
+};
+const color = platformColors[platformName] ?? 'blue';
+
+const colorMap: Record<string, { badge: string; ring: string; label: string }> = {
+  orange: {
+    badge: 'border-orange-500/20 bg-orange-500/10 text-orange-400',
+    ring:  'focus:ring-orange-500',
+    label: 'text-orange-400',
+  },
+  blue: {
+    badge: 'border-blue-500/20 bg-blue-500/10 text-blue-400',
+    ring:  'focus:ring-blue-500',
+    label: 'text-blue-400',
+  },
+  pink: {
+    badge: 'border-pink-500/20 bg-pink-500/10 text-pink-400',
+    ring:  'focus:ring-pink-500',
+    label: 'text-pink-400',
+  },
+  rose: {
+    badge: 'border-rose-500/20 bg-rose-500/10 text-rose-400',
+    ring:  'focus:ring-rose-500',
+    label: 'text-rose-400',
+  },
+};
+const c = colorMap[color];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: `What is the seller fee for ${category} on ${platformName}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${platformName} charges a referral/commission fee of ${referralFeePercent}% on the selling price for ${category}${minimumReferralFee > 0 ? `, subject to a minimum of ₹${minimumReferralFee}` : ''}. A closing/collection fee of ₹${closingFee} is also deducted per order.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `How is net payout calculated on ${platformName}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Net payout = Selling Price − Referral Fee − Closing Fee. The referral fee is ${referralFeePercent}% of the selling price (minimum ₹${minimumReferralFee}), and the closing fee is ₹${closingFee} per order. All fees may also attract 18% GST.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are marketplace seller fees subject to GST in India?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All marketplace seller fees — including referral fees, closing fees, and fulfilment fees — are subject to 18% GST in India. The GST is charged on the platform fee amount and is deducted from the seller\'s payout or collected separately depending on the platform.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout title={`${h1Title} | ShipCalc`} description={metaDescription} canonicalSlug={`../fees/${slug}`}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <main class="mx-auto max-w-4xl px-4 py-12">
+
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex items-center gap-2 text-sm text-gray-500">
+      <a href="/" class="transition-colors hover:text-gray-300">Home</a>
+      <span>›</span>
+      <a href="/#marketplace" class="transition-colors hover:text-gray-300">Marketplace Fees</a>
+      <span>›</span>
+      <span class="text-gray-300">{platformName}</span>
+    </nav>
+
+    <!-- Title Block -->
+    <div class="mb-10">
+      <div class="mb-4 flex flex-wrap gap-2">
+        <span class={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${c.badge}`}>
+          {platformName}
+        </span>
+        <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-700/50 px-3 py-1 text-xs font-medium text-gray-400">
+          {category}
+        </span>
+        <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-700/50 px-3 py-1 text-xs font-medium text-gray-400">
+          {referralFeePercent}% Commission
+        </span>
+      </div>
+      <h1 class="text-3xl font-bold leading-tight text-white md:text-4xl">{h1Title}</h1>
+      <p class="mt-3 text-lg text-gray-400">
+        Enter your listing price to instantly calculate fees and net payout.
+      </p>
+    </div>
+
+    <!-- CALCULATOR CARD -->
+    <div class="mb-12 overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 shadow-2xl">
+
+      <div class="flex items-center gap-2 border-b border-gray-800 bg-gradient-to-r from-gray-800/60 to-gray-900 px-6 py-4">
+        <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
+        <span class="h-3 w-3 rounded-full bg-yellow-400/80"></span>
+        <span class="h-3 w-3 rounded-full bg-green-400/80"></span>
+        <span class="ml-3 font-mono text-sm text-gray-500">
+          {platformName} &middot; {category} &middot; {referralFeePercent}% referral
+        </span>
+      </div>
+
+      <div class="p-6 md:p-8">
+
+        <!-- Selling Price Input -->
+        <div class="mb-6">
+          <label for="sellingPrice" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">
+            Selling Price (MRP / Listed Price)
+          </label>
+          <div class="relative max-w-xs">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-lg font-semibold text-gray-400">₹</span>
+            <input
+              type="number"
+              id="sellingPrice"
+              placeholder="0"
+              min="0"
+              step="1"
+              class={`w-full rounded-xl border border-gray-700 bg-gray-800 py-3 pl-9 pr-4 text-lg font-medium text-white placeholder-gray-600 transition-all focus:border-transparent focus:outline-none focus:ring-2 ${c.ring}`}
+            />
+          </div>
+        </div>
+
+        <!-- Fee Breakdown Strip -->
+        <div class="mb-6 flex flex-wrap items-center justify-center gap-2 rounded-xl bg-gray-800/60 px-4 py-3 font-mono text-sm text-gray-400">
+          <span>Referral Fee</span>
+          <span class="text-gray-600">=</span>
+          <span class="text-gray-200">max(Price × {referralFeePercent}%, ₹{minimumReferralFee})</span>
+          <span class="mx-2 text-gray-700">+</span>
+          <span>Closing Fee</span>
+          <span class="text-gray-600">=</span>
+          <span class={`font-bold ${c.label}`}>₹{closingFee}</span>
+        </div>
+
+        <!-- Results Grid -->
+        <div id="results" class="grid grid-cols-2 gap-4 opacity-40 transition-opacity duration-300 md:grid-cols-4">
+          <div class="rounded-xl border border-gray-700 bg-gray-800 p-5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Referral Fee</p>
+            <p class="text-2xl font-bold text-white"><span id="referralFeeAmt">—</span></p>
+            <p class="mt-1 text-xs text-gray-500">₹</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-gray-800 p-5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Closing Fee</p>
+            <p class="text-2xl font-bold text-white">₹{closingFee}</p>
+            <p class="mt-1 text-xs text-gray-500">fixed per order</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-gray-800 p-5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Total Fees</p>
+            <p class="text-2xl font-bold text-orange-300"><span id="totalFeesAmt">—</span></p>
+            <p class="mt-1 text-xs text-gray-500">₹ · <span id="effectiveRate">—</span> effective</p>
+          </div>
+          <div id="payoutCard" class="rounded-xl border border-green-500/30 bg-green-500/10 p-5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-green-400">✅ Net Payout</p>
+            <p class="text-2xl font-bold text-green-300"><span id="netPayoutAmt">—</span></p>
+            <p class="mt-1 text-xs text-gray-500">₹ before GST on fees</p>
+          </div>
+        </div>
+
+        <!-- GST warning -->
+        <div id="gstNote" class="mt-4 hidden rounded-xl border border-yellow-500/20 bg-yellow-500/10 px-5 py-3 text-sm text-yellow-300">
+          ⚠️ <strong>Note:</strong> 18% GST is applicable on all platform fees. Your actual payout may be slightly lower. Always verify with your {platformName} seller portal.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Fee Note -->
+    <div class="mb-8 rounded-xl border border-gray-800 bg-gray-900/50 px-5 py-4 text-sm text-gray-400">
+      <span class="font-semibold text-gray-300">Fee Structure Note: </span>{feeNote}
+    </div>
+
+    <!-- SEO PARAGRAPH -->
+    <div class="mb-12 rounded-2xl border border-gray-800 bg-gray-900 p-6 md:p-8">
+      <h2 class="mb-3 text-lg font-semibold text-white">
+        About {platformName} {category} Seller Fees
+      </h2>
+      <p class="leading-relaxed text-gray-400">{seoParagraph}</p>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="mb-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div class="rounded-xl border border-gray-800 bg-gray-900 p-5">
+        <div class="mb-2 text-2xl">📊</div>
+        <h3 class="mb-1 text-sm font-semibold text-white">Referral Fee</h3>
+        <p class="text-sm text-gray-400">
+          {platformName} charges <span class="font-bold text-white">{referralFeePercent}%</span> of selling price
+          {minimumReferralFee > 0 ? ` with a ₹${minimumReferralFee} minimum` : ''} for {category}.
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-800 bg-gray-900 p-5">
+        <div class="mb-2 text-2xl">🔒</div>
+        <h3 class="mb-1 text-sm font-semibold text-white">Closing Fee</h3>
+        <p class="text-sm text-gray-400">
+          A fixed closing/collection fee of <span class="font-bold text-white">₹{closingFee}</span> is charged per order on top of the referral fee.
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-800 bg-gray-900 p-5">
+        <div class="mb-2 text-2xl">⚠️</div>
+        <h3 class="mb-1 text-sm font-semibold text-white">GST on Fees</h3>
+        <p class="text-sm text-gray-400">
+          18% GST applies on all platform fees. Your actual payout will be slightly lower than shown. Verify in your {platformName} seller portal.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <div class="mb-12 rounded-2xl border border-gray-800 bg-gray-900 p-6 md:p-8">
+      <h2 class="mb-6 text-lg font-semibold text-white">Frequently Asked Questions</h2>
+      <div class="space-y-5">
+        {faqSchema.mainEntity.map((faq, i) => (
+          <div class={i < faqSchema.mainEntity.length - 1 ? 'border-b border-gray-800 pb-5' : ''}>
+            <h3 class="mb-2 font-medium text-white">{faq.name}</h3>
+            <p class="text-sm leading-relaxed text-gray-400">{faq.acceptedAnswer.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RELATED CALCULATORS -->
+    <div class="mb-12">
+      <h2 class="mb-6 text-lg font-semibold text-white">Related Fee Calculators</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {related.map((r) => (
+          <a
+            href={`/fees/${r.slug}`}
+            class="group rounded-xl border border-gray-800 bg-gray-900 p-5 transition-all duration-200 hover:border-blue-500/40 hover:bg-gray-800"
+          >
+            <div class="mb-2 flex items-center justify-between">
+              <span class="text-sm font-semibold text-white">{r.platformName}</span>
+              <span class="rounded-full border border-gray-700 bg-gray-700/50 px-2 py-0.5 text-xs text-gray-400">
+                {r.referralFeePercent}%
+              </span>
+            </div>
+            <p class="mb-3 text-xs text-gray-500">{r.category}</p>
+            <span class="text-xs text-blue-400 transition-colors group-hover:text-blue-300">Calculate →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </main>
+</BaseLayout>
+
+<script define:vars={{ referralFeePercent, minimumReferralFee, closingFee }}>
+  const input = document.getElementById('sellingPrice');
+
+  function calculate() {
+    const price = parseFloat(input.value) || 0;
+    const resultsEl = document.getElementById('results');
+    const gstNote   = document.getElementById('gstNote');
+
+    if (price <= 0) {
+      resultsEl.classList.add('opacity-40');
+      gstNote.classList.add('hidden');
+      ['referralFeeAmt', 'totalFeesAmt', 'netPayoutAmt'].forEach(
+        (id) => (document.getElementById(id).textContent = '—')
+      );
+      document.getElementById('effectiveRate').textContent = '—';
+      return;
+    }
+
+    const referralFee = Math.max((price * referralFeePercent) / 100, minimumReferralFee);
+    const totalFees   = referralFee + closingFee;
+    const netPayout   = price - totalFees;
+    const effectiveRate = ((totalFees / price) * 100).toFixed(1);
+
+    resultsEl.classList.remove('opacity-40');
+    document.getElementById('referralFeeAmt').textContent = '₹' + referralFee.toFixed(2);
+    document.getElementById('totalFeesAmt').textContent   = '₹' + totalFees.toFixed(2);
+    document.getElementById('netPayoutAmt').textContent   = '₹' + Math.max(netPayout, 0).toFixed(2);
+    document.getElementById('effectiveRate').textContent  = effectiveRate + '%';
+
+    gstNote.classList.remove('hidden');
+  }
+
+  input.addEventListener('input', calculate);
+</script>

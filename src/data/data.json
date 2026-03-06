@@ -207,6 +207,33 @@
     "seoParagraph": "Smartr Logistics, a technology-driven e-commerce courier, applies a volumetric divisor of 5000 for its air express delivery services across India. The dimensional weight is calculated as (L × W × H in cm) ÷ 5000 and compared against the actual package weight to determine the chargeable weight. E-commerce brands using Smartr Logistics for fast air delivery should verify dimensional weight at the time of shipment booking to avoid unexpected billing adjustments."
   },
   {
+    "slug": "shadowfax-air-volumetric-weight-calculator",
+    "courierName": "Shadowfax",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Shadowfax Air Volumetric Weight Calculator",
+    "metaDescription": "Calculate Shadowfax Air dimensional weight using the 5000 divisor. Instantly find your chargeable weight for Shadowfax air express e-commerce shipments.",
+    "seoParagraph": "Shadowfax applies a volumetric divisor of 5000 for its air express shipments, consistent with the standard domestic air freight divisor used across India. Shippers can calculate dimensional weight as (L × W × H in cm) ÷ 5000 and compare it against the actual package weight. For D2C brands using Shadowfax Air for time-sensitive deliveries, accurate volumetric weight calculation is essential to avoid billing discrepancies and maintain predictable logistics costs."
+  },
+  {
+    "slug": "amazon-easy-ship-air-volumetric-weight-calculator",
+    "courierName": "Amazon Easy Ship",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Amazon Easy Ship Air Volumetric Weight Calculator",
+    "metaDescription": "Calculate Amazon Easy Ship Air dimensional weight using the 5000 divisor. Find chargeable weight for Amazon Easy Ship air shipments for FBM sellers.",
+    "seoParagraph": "Amazon Easy Ship, Amazon India's fulfilment solution for third-party sellers, uses a volumetric divisor of 5000 for air-mode shipments. Sellers can calculate dimensional weight using the formula (L × W × H in cm) ÷ 5000 and compare the result to the actual package weight. Amazon Easy Ship bills the higher of the two values, and FBM (Fulfilled by Merchant) sellers should verify their package dimensions in Seller Central to avoid weight handling fee disputes."
+  },
+  {
+    "slug": "amazon-easy-ship-surface-volumetric-weight-calculator",
+    "courierName": "Amazon Easy Ship",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Amazon Easy Ship Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Amazon Easy Ship Surface dimensional weight using the 4000 divisor. Essential for Amazon FBM sellers to estimate ground shipment chargeable weight.",
+    "seoParagraph": "Amazon Easy Ship's surface delivery service uses a volumetric divisor of 4000 for ground-mode shipments processed through its network. Amazon FBM sellers must calculate (L × W × H in cm) ÷ 4000 to find the volumetric weight and compare it against the actual parcel weight. Amazon charges the higher value, and sellers who consistently under-declare dimensions risk weight discrepancy claims and additional charges on their Seller Central account."
+  },
+  {
     "slug": "india-post-speed-post-air-volumetric-weight-calculator",
     "courierName": "India Post",
     "transportMode": "Air",

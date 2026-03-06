@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const publishDate = '2025-01-15';
+const modifiedDate = '2025-03-01';
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'What is Volumetric Weight in Shipping? A Complete Guide for Indian Sellers',
+  description: 'Learn how volumetric weight is calculated, why couriers charge it, and how to reduce your shipping costs by optimising package dimensions.',
+  datePublished: publishDate,
+  dateModified: modifiedDate,
+  author: { '@type': 'Organization', name: 'ShipCalc' },
+  publisher: { '@type': 'Organization', name: 'ShipCalc', url: 'https://shipcalc-ten.vercel.app' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the formula for volumetric weight?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Volumetric Weight (kg) = (Length × Width × Height in cm) ÷ Divisor. Indian domestic couriers use 4000 for surface and 5000 for air. International couriers like FedEx, DHL, and UPS use 5000.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why do couriers charge volumetric weight?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Couriers charge volumetric weight because a large, light package takes up cargo space that could otherwise carry heavier, more profitable freight. By pricing based on the greater of actual vs. volumetric weight, couriers ensure they are compensated for the space a shipment occupies.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which divisor do Indian couriers use?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most Indian couriers — including Delhivery, BlueDart, DTDC, Xpressbees, and Ecom Express — use 4000 for surface shipments and 5000 for air shipments. India Post Speed Post uses 6000, which is the IATA standard.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How can I reduce my volumetric weight?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Use the smallest possible box that safely fits your product. Remove unnecessary void fill, switch to poly bags for soft goods, use flat packaging where possible, and avoid oversized outer boxes. Every centimetre reduction in a dimension reduces your volumetric weight.',
+      },
+    },
+  ],
+};
+
+const couriers = [
+  { name: 'Delhivery',       mode: 'Surface', divisor: 4000 },
+  { name: 'Delhivery',       mode: 'Air',     divisor: 5000 },
+  { name: 'BlueDart',        mode: 'Surface', divisor: 4000 },
+  { name: 'BlueDart',        mode: 'Air',     divisor: 5000 },
+  { name: 'DTDC',            mode: 'Surface', divisor: 4000 },
+  { name: 'DTDC',            mode: 'Air',     divisor: 5000 },
+  { name: 'Xpressbees',      mode: 'Surface', divisor: 4000 },
+  { name: 'Xpressbees',      mode: 'Air',     divisor: 5000 },
+  { name: 'Ecom Express',    mode: 'Surface', divisor: 4000 },
+  { name: 'Ecom Express',    mode: 'Air',     divisor: 5000 },
+  { name: 'Ekart Logistics', mode: 'Surface', divisor: 4000 },
+  { name: 'Shiprocket',      mode: 'Surface', divisor: 4000 },
+  { name: 'Shiprocket',      mode: 'Air',     divisor: 5000 },
+  { name: 'Shadowfax',       mode: 'Surface', divisor: 5000 },
+  { name: 'Gati KWE',        mode: 'Surface', divisor: 4000 },
+  { name: 'Gati KWE',        mode: 'Air',     divisor: 5000 },
+  { name: 'FedEx',           mode: 'Air (International)', divisor: 5000 },
+  { name: 'DHL Express',     mode: 'Air (International)', divisor: 5000 },
+  { name: 'UPS',             mode: 'Air (International)', divisor: 5000 },
+  { name: 'Aramex',          mode: 'Air (International)', divisor: 5000 },
+  { name: 'India Post',      mode: 'Air (Speed Post/EMS)', divisor: 6000 },
+];
+---
+
+<BaseLayout
+  title="What is Volumetric Weight in Shipping? Complete Guide — ShipCalc"
+  description="Learn how volumetric weight is calculated, which divisor each Indian courier uses, and 5 proven tips to reduce your shipping costs by optimising packaging."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <main class="mx-auto max-w-3xl px-4 py-12">
+
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex items-center gap-2 text-sm text-gray-500">
+      <a href="/" class="transition-colors hover:text-gray-300">Home</a>
+      <span>›</span>
+      <span class="text-gray-300">Blog</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="mb-10">
+      <div class="mb-4 flex flex-wrap gap-2">
+        <span class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
+          Shipping Guide
+        </span>
+        <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-700/50 px-3 py-1 text-xs font-medium text-gray-400">
+          5 min read
+        </span>
+      </div>
+      <h1 class="text-3xl font-bold leading-tight text-white md:text-4xl">
+        What is Volumetric Weight in Shipping? A Complete Guide for Indian Sellers
+      </h1>
+      <p class="mt-4 text-lg text-gray-400">
+        Learn how dimensional weight is calculated, why every courier charges it, and exactly how to reduce your shipping bill by optimising your packaging.
+      </p>
+      <p class="mt-4 text-sm text-gray-600">
+        Updated: {new Date(modifiedDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    </header>
+
+    <!-- Article Body -->
+    <article class="prose-invert space-y-10">
+
+      <!-- Section 1 -->
+      <section>
+        <h2 class="mb-4 text-2xl font-bold text-white">What is Volumetric Weight?</h2>
+        <p class="leading-relaxed text-gray-400">
+          Volumetric weight — also called <strong class="text-gray-200">dimensional weight</strong> or <strong class="text-gray-200">DIM weight</strong> — is a pricing method used by every major courier worldwide. Instead of charging purely based on how heavy your package is, couriers also consider how much <em>space</em> it takes up.
+        </p>
+        <p class="mt-4 leading-relaxed text-gray-400">
+          Think about it from the courier's perspective: a 10 kg box of bricks and a 1 kg box of styrofoam peanuts can be the exact same size. The styrofoam box occupies just as much space in the delivery van or cargo aircraft — but the courier earns far less for shipping it if they only charge by weight. Volumetric weight solves this.
+        </p>
+        <p class="mt-4 leading-relaxed text-gray-400">
+          The courier calculates both the <strong class="text-gray-200">actual (dead) weight</strong> and the <strong class="text-gray-200">volumetric weight</strong> of your package, and bills you for whichever is higher. This is known as the <strong class="text-gray-200">chargeable weight</strong> or <strong class="text-gray-200">billable weight</strong>.
+        </p>
+      </section>
+
+      <!-- Section 2: Formula -->
+      <section>
+        <h2 class="mb-4 text-2xl font-bold text-white">The Volumetric Weight Formula</h2>
+        <p class="mb-4 leading-relaxed text-gray-400">
+          The formula is straightforward:
+        </p>
+        <div class="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-6 text-center font-mono">
+          <p class="text-lg text-gray-300">
+            Volumetric Weight (kg) =
+          </p>
+          <p class="mt-2 text-2xl font-bold text-white">
+            (L × W × H) ÷ Divisor
+          </p>
+          <p class="mt-2 text-sm text-gray-500">
+            where L, W, H are in centimetres
+          </p>
+        </div>
+        <p class="mt-4 leading-relaxed text-gray-400">
+          The <strong class="text-gray-200">divisor</strong> is a number assigned by each courier that converts cubic centimetres into kilograms. Most Indian domestic couriers use <strong class="text-gray-200">4000</strong> for surface/ground shipments and <strong class="text-gray-200">5000</strong> for air shipments.
+        </p>
+        <div class="mt-6 rounded-xl border border-gray-800 bg-gray-900 p-5">
+          <p class="mb-2 text-sm font-semibold text-gray-300">Example Calculation</p>
+          <p class="text-sm text-gray-400">Package: 40 cm × 30 cm × 20 cm, Actual weight: 1.5 kg, Courier: Delhivery Surface (divisor 4000)</p>
+          <div class="mt-3 font-mono text-sm">
+            <p class="text-gray-400">Volumetric weight = (40 × 30 × 20) ÷ 4000</p>
+            <p class="text-gray-400">= 24,000 ÷ 4000</p>
+            <p class="mt-1 font-bold text-white">= 6 kg</p>
+          </div>
+          <p class="mt-3 text-sm text-gray-400">
+            Since 6 kg &gt; 1.5 kg actual weight, you will be billed for <strong class="text-orange-400">6 kg</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: Courier Table -->
+      <section>
+        <h2 class="mb-4 text-2xl font-bold text-white">Volumetric Divisors for Indian & Global Couriers</h2>
+        <p class="mb-6 leading-relaxed text-gray-400">
+          The divisor varies by courier and transport mode. Use this reference table or our individual calculators to find the right divisor for your shipment.
+        </p>
+        <div class="overflow-x-auto rounded-xl border border-gray-800">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-800 bg-gray-900">
+                <th class="px-4 py-3 text-left font-semibold text-gray-300">Courier</th>
+                <th class="px-4 py-3 text-left font-semibold text-gray-300">Mode</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-300">Divisor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {couriers.map((c, i) => (
+                <tr class={`border-b border-gray-800/50 ${i % 2 === 0 ? 'bg-gray-900' : 'bg-gray-900/50'}`}>
+                  <td class="px-4 py-3 font-medium text-white">{c.name}</td>
+                  <td class="px-4 py-3 text-gray-400">
+                    <span class={`rounded-full border px-2 py-0.5 text-xs ${c.mode.includes('Air') ? 'border-purple-500/20 bg-purple-500/10 text-purple-400' : 'border-green-500/20 bg-green-500/10 text-green-400'}`}>
+                      {c.mode}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 text-right font-mono font-bold text-blue-400">{c.divisor.toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4: Tips -->
+      <section>
+        <h2 class="mb-4 text-2xl font-bold text-white">5 Proven Tips to Reduce Volumetric Weight</h2>
+        <div class="space-y-4">
+          {[
+            {
+              n: '01',
+              title: 'Use the smallest box that fits safely',
+              body: 'Every extra centimetre of box length, width, or height directly increases your volumetric weight. Switch to snug-fit boxes for your most shipped SKUs.',
+            },
+            {
+              n: '02',
+              title: 'Switch to poly bags for soft goods',
+              body: 'T-shirts, kurtis, leggings, and other soft items shipped in boxes add unnecessary cubic volume. A well-sealed poly bag reduces dimensions dramatically.',
+            },
+            {
+              n: '03',
+              title: 'Eliminate excess void fill',
+              body: 'Bubble wrap, foam, and air pillows add dimensions without adding value. Use just enough protection and choose thinner alternatives like tissue paper or recycled paper.',
+            },
+            {
+              n: '04',
+              title: 'Use flat packaging for documents and thin items',
+              body: 'Booklets, cards, thin accessories, and flat products shipped in padded envelopes or slim mailers have significantly lower volumetric weight than the same items in a box.',
+            },
+            {
+              n: '05',
+              title: 'Audit your packaging regularly',
+              body: 'Review your top 10 shipping SKUs every quarter. A 2 cm reduction on your highest-volume product can save thousands of rupees in shipping costs monthly.',
+            },
+          ].map((tip) => (
+            <div class="flex gap-4 rounded-xl border border-gray-800 bg-gray-900 p-5">
+              <span class="shrink-0 font-mono text-2xl font-bold text-gray-700">{tip.n}</span>
+              <div>
+                <h3 class="mb-1 font-semibold text-white">{tip.title}</h3>
+                <p class="text-sm leading-relaxed text-gray-400">{tip.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Section 5: FAQ -->
+      <section>
+        <h2 class="mb-6 text-2xl font-bold text-white">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {faqSchema.mainEntity.map((faq) => (
+            <details class="group rounded-xl border border-gray-800 bg-gray-900 p-5">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-white">
+                {faq.name}
+                <span class="ml-4 shrink-0 text-gray-500 transition-transform group-open:rotate-180">▼</span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-400">
+                {faq.acceptedAnswer.text}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-8 text-center">
+        <h2 class="mb-2 text-xl font-bold text-white">Calculate Volumetric Weight Instantly</h2>
+        <p class="mb-6 text-gray-400">
+          Use our free calculators for every major Indian and global courier.
+        </p>
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-500"
+        >
+          View All Calculators →
+        </a>
+      </section>
+
+    </article>
+
+  </main>
+</BaseLayout>
