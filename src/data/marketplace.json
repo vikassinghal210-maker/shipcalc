@@ -130,5 +130,41 @@
     "h1Title": "Nykaa Beauty Seller Fee Calculator",
     "metaDescription": "Calculate Nykaa seller fees for Beauty and Personal Care products. Find your commission, fulfilment fee, and net payout for beauty brand listings on Nykaa.",
     "seoParagraph": "Nykaa charges a commission of approximately 22% on the selling price for Beauty and Personal Care products sold through its marketplace. A per-order fulfilment fee is charged on top of the commission, making it essential for beauty brands to calculate their net payout before pricing their Nykaa listings. Despite the higher commission, Nykaa's highly targeted, purchase-intent audience for beauty products often delivers strong conversion rates and repeat customers, making it one of the most valuable platforms for beauty and skincare brands in India."
+  },
+  {
+    "slug": "meesho-fashion-seller-fee-calculator",
+    "platformName": "Meesho",
+    "category": "Fashion & Clothing",
+    "referralFeePercent": 0,
+    "minimumReferralFee": 0,
+    "closingFee": 0,
+    "feeNote": "Meesho charges 0% commission across all categories. Sellers only pay logistics charges (handled by Meesho) and 18% GST on logistics fees. There are no referral fees or closing fees.",
+    "h1Title": "Meesho Fashion Seller Fee Calculator — 0% Commission",
+    "metaDescription": "Meesho charges 0% commission on Fashion & Clothing. Calculate your net payout on Meesho and understand the logistics fee structure for fashion sellers.",
+    "seoParagraph": "Meesho is unique among Indian marketplaces in charging zero commission (0%) on all categories including Fashion and Clothing. Introduced in 2022, this model means sellers keep their full selling price minus only the logistics charges, which Meesho handles end-to-end. Fashion sellers on Meesho should factor in logistics costs (which vary by weight and destination) and the 18% GST on those logistics charges to calculate their true net payout per order."
+  },
+  {
+    "slug": "meesho-electronics-seller-fee-calculator",
+    "platformName": "Meesho",
+    "category": "Electronics & Accessories",
+    "referralFeePercent": 0,
+    "minimumReferralFee": 0,
+    "closingFee": 0,
+    "feeNote": "Meesho charges 0% commission on all categories. Logistics fees and 18% GST on logistics apply. Electronics sellers should account for higher logistics costs due to fragile handling requirements.",
+    "h1Title": "Meesho Electronics Seller Fee Calculator — 0% Commission",
+    "metaDescription": "Meesho charges 0% commission on Electronics. Calculate your Meesho net payout and understand logistics costs for electronics and accessories sellers.",
+    "seoParagraph": "Meesho's zero-commission model applies equally to Electronics and Accessories, making it a cost-effective alternative to Amazon and Flipkart for small electronics sellers. With no referral fee and no closing fee, the only platform deduction is the logistics charge for delivery, which Meesho manages through its own last-mile network. Electronics sellers should note that fragile or high-value items may attract higher logistics handling fees, and all logistics charges are subject to 18% GST."
+  },
+  {
+    "slug": "meesho-home-kitchen-seller-fee-calculator",
+    "platformName": "Meesho",
+    "category": "Home & Kitchen",
+    "referralFeePercent": 0,
+    "minimumReferralFee": 0,
+    "closingFee": 0,
+    "feeNote": "Meesho charges 0% commission on all categories. Only logistics fees and GST on logistics apply. Home & Kitchen items with higher volumetric weight may attract higher logistics charges.",
+    "h1Title": "Meesho Home & Kitchen Seller Fee Calculator — 0% Commission",
+    "metaDescription": "Meesho charges 0% commission on Home & Kitchen products. Calculate your net payout and understand logistics costs for home product sellers on Meesho.",
+    "seoParagraph": "Meesho's 0% commission policy covers the Home & Kitchen category, allowing sellers of cookware, storage, décor, and home accessories to retain their full selling price minus logistics. This makes Meesho particularly attractive for home product sellers operating on thin margins where the 9–10% commission charged by Amazon and Flipkart would be prohibitive. Sellers should note that bulky Home & Kitchen items with high volumetric weight will incur proportionally higher logistics charges from Meesho's delivery partners."
   }
 ]

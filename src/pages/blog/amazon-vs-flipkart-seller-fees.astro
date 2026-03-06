@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const publishDate  = '2025-02-10';
+const modifiedDate = '2025-03-01';
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type':    'Article',
+  headline:   'Amazon India vs Flipkart Seller Fees: Complete Comparison 2025',
+  description:'A side-by-side comparison of Amazon India and Flipkart seller fees across all major product categories to help you choose the right platform.',
+  datePublished:  publishDate,
+  dateModified:   modifiedDate,
+  author:    { '@type': 'Organization', name: 'ShipCalc' },
+  publisher: { '@type': 'Organization', name: 'ShipCalc', url: 'https://shipcalc-ten.vercel.app' },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type':    'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Which platform has lower seller fees — Amazon India or Flipkart?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'It depends on the category. For Mobile Phones, Amazon charges 5% vs Flipkart\'s 5.5%. For Fashion, Flipkart charges 20% vs Amazon\'s 15%. For Electronics, Flipkart (7%) is cheaper than Amazon (8%). Always compare category-by-category before choosing a platform.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Amazon India charge a closing fee?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Amazon India charges a closing fee of ₹2 (for items ≤₹250), ₹10 (₹251–₹500), or ₹25 (above ₹500) per order, in addition to the referral fee.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the collection fee on Flipkart?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Flipkart charges a flat collection fee of ₹30–₹40 per order depending on the category, in addition to the commission percentage. All fees are subject to 18% GST.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Should I sell on Amazon or Flipkart?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'For Electronics and Mobile Phones, Flipkart often has lower commission rates. For Books and Home & Kitchen, both are comparable. For Fashion, Amazon\'s 15% is lower than Flipkart\'s 20%. Many successful sellers list on both platforms to maximise reach. Always use a fee calculator to model your exact net payout before committing.',
+      },
+    },
+  ],
+};
+
+const comparison = [
+  { category: 'Mobile Phones',     amazon: 5,    flipkart: 5.5, winner: 'amazon' },
+  { category: 'Electronics',       amazon: 8,    flipkart: 7,   winner: 'flipkart' },
+  { category: 'Clothing & Fashion',amazon: 15,   flipkart: 20,  winner: 'amazon' },
+  { category: 'Home & Kitchen',    amazon: 9,    flipkart: 10,  winner: 'amazon' },
+  { category: 'Books',             amazon: 7.5,  flipkart: 8,   winner: 'amazon' },
+  { category: 'Sports & Fitness',  amazon: 9,    flipkart: 9,   winner: 'tie' },
+  { category: 'Toys & Baby',       amazon: 9,    flipkart: 10,  winner: 'amazon' },
+  { category: 'Beauty & Health',   amazon: 10,   flipkart: 10,  winner: 'tie' },
+  { category: 'Shoes & Footwear',  amazon: 10,   flipkart: 12,  winner: 'amazon' },
+];
+---
+
+<BaseLayout
+  title="Amazon India vs Flipkart Seller Fees: Full Comparison 2025 — ShipCalc"
+  description="Amazon India vs Flipkart seller fees compared category by category. Find out which platform charges less commission and maximises your net payout in 2025."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <main class="mx-auto max-w-3xl px-4 py-12">
+
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex items-center gap-2 text-sm text-gray-500">
+      <a href="/" class="transition-colors hover:text-gray-300">Home</a>
+      <span>›</span>
+      <span class="text-gray-300">Blog</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <div class="mb-4 flex flex-wrap gap-2">
+        <span class="inline-flex items-center rounded-full border border-orange-500/20 bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-400">
+          Fee Comparison
+        </span>
+        <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-700/50 px-3 py-1 text-xs font-medium text-gray-400">
+          6 min read
+        </span>
+      </div>
+      <h1 class="text-3xl font-bold leading-tight text-white md:text-4xl">
+        Amazon India vs Flipkart Seller Fees: Complete Comparison 2025
+      </h1>
+      <p class="mt-4 text-lg text-gray-400">
+        A category-by-category breakdown of referral fees, closing fees, and net payout — so you can pick the right platform before you list.
+      </p>
+      <p class="mt-4 text-sm text-gray-600">
+        Updated: {new Date(modifiedDate).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    </header>
+
+    <article class="space-y-12">
+
+      <!-- Intro -->
+      <section>
+        <p class="leading-relaxed text-gray-400">
+          Choosing between Amazon India and Flipkart is one of the first decisions every Indian e-commerce seller faces. Both platforms have massive reach — but their fee structures differ significantly by category, and a seemingly small difference in commission percentage can mean thousands of rupees lost on high-volume SKUs.
+        </p>
+        <p class="mt-4 leading-relaxed text-gray-400">
+          This guide compares fees side by side for all major categories, explains the additional charges each platform applies, and helps you calculate which platform gives you the higher net payout for your specific product.
+        </p>
+      </section>
+
+      <!-- Fee Structure Overview -->
+      <section>
+        <h2 class="mb-6 text-2xl font-bold text-white">Fee Structure Overview</h2>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div class="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="text-2xl">📦</span>
+              <h3 class="text-lg font-bold text-white">Amazon India</h3>
+            </div>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li class="flex items-start gap-2"><span class="mt-1 text-orange-400">▸</span><span><strong class="text-gray-200">Referral Fee:</strong> 5%–15% depending on category</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-orange-400">▸</span><span><strong class="text-gray-200">Closing Fee:</strong> ₹2–₹25 tiered by selling price</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-orange-400">▸</span><span><strong class="text-gray-200">Minimum Referral Fee:</strong> ₹5 per order</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-orange-400">▸</span><span><strong class="text-gray-200">FBA fees:</strong> Additional if using Amazon fulfilment</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-orange-400">▸</span><span><strong class="text-gray-200">GST:</strong> 18% on all platform fees</span></li>
+            </ul>
+          </div>
+          <div class="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-6">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="text-2xl">🛒</span>
+              <h3 class="text-lg font-bold text-white">Flipkart</h3>
+            </div>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li class="flex items-start gap-2"><span class="mt-1 text-blue-400">▸</span><span><strong class="text-gray-200">Commission Fee:</strong> 5.5%–20% depending on category</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-blue-400">▸</span><span><strong class="text-gray-200">Collection Fee:</strong> ₹30–₹40 flat per order</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-blue-400">▸</span><span><strong class="text-gray-200">Minimum Fee:</strong> None (flat collection fee applies regardless)</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-blue-400">▸</span><span><strong class="text-gray-200">Flipkart Fulfilment:</strong> Additional if using Flipkart warehouses</span></li>
+              <li class="flex items-start gap-2"><span class="mt-1 text-blue-400">▸</span><span><strong class="text-gray-200">GST:</strong> 18% on all platform fees</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison Table -->
+      <section>
+        <h2 class="mb-6 text-2xl font-bold text-white">Referral Fee Comparison by Category</h2>
+        <p class="mb-6 text-gray-400">All percentages are referral/commission rates on the selling price. Lower is better for sellers.</p>
+        <div class="overflow-x-auto rounded-xl border border-gray-800">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-800 bg-gray-900">
+                <th class="px-4 py-3 text-left font-semibold text-gray-300">Category</th>
+                <th class="px-4 py-3 text-center font-semibold text-orange-400">Amazon India</th>
+                <th class="px-4 py-3 text-center font-semibold text-blue-400">Flipkart</th>
+                <th class="px-4 py-3 text-center font-semibold text-gray-300">Better Deal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row, i) => (
+                <tr class={`border-b border-gray-800/50 ${i % 2 === 0 ? 'bg-gray-900' : 'bg-gray-900/40'}`}>
+                  <td class="px-4 py-3 font-medium text-white">{row.category}</td>
+                  <td class={`px-4 py-3 text-center font-mono font-bold ${row.winner === 'amazon' ? 'text-green-400' : 'text-gray-300'}`}>
+                    {row.amazon}%
+                  </td>
+                  <td class={`px-4 py-3 text-center font-mono font-bold ${row.winner === 'flipkart' ? 'text-green-400' : 'text-gray-300'}`}>
+                    {row.flipkart}%
+                  </td>
+                  <td class="px-4 py-3 text-center text-xs">
+                    {row.winner === 'tie'
+                      ? <span class="rounded-full border border-gray-700 bg-gray-700/50 px-2 py-0.5 text-gray-400">Tie</span>
+                      : row.winner === 'amazon'
+                        ? <span class="rounded-full border border-orange-500/20 bg-orange-500/10 px-2 py-0.5 text-orange-400">Amazon</span>
+                        : <span class="rounded-full border border-blue-500/20 bg-blue-500/10 px-2 py-0.5 text-blue-400">Flipkart</span>
+                    }
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-xs text-gray-600">* Rates are indicative and subject to change. Always verify in your seller portal before pricing decisions.</p>
+      </section>
+
+      <!-- Net Payout Example -->
+      <section>
+        <h2 class="mb-6 text-2xl font-bold text-white">Real Example: ₹999 Electronics Product</h2>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div class="rounded-xl border border-orange-500/20 bg-gray-900 p-6">
+            <h3 class="mb-4 font-bold text-orange-400">📦 Amazon India</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-400">Selling Price</span><span class="font-medium text-white">₹999</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Referral Fee (8%)</span><span class="text-red-400">− ₹79.92</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Closing Fee</span><span class="text-red-400">− ₹25.00</span></div>
+              <div class="mt-2 flex justify-between border-t border-gray-800 pt-2"><span class="font-semibold text-white">Net Payout</span><span class="font-bold text-green-400">₹894.08</span></div>
+              <div class="flex justify-between text-xs"><span class="text-gray-600">Effective fee rate</span><span class="text-gray-500">10.5%</span></div>
+            </div>
+          </div>
+          <div class="rounded-xl border border-blue-500/20 bg-gray-900 p-6">
+            <h3 class="mb-4 font-bold text-blue-400">🛒 Flipkart</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-400">Selling Price</span><span class="font-medium text-white">₹999</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Commission (7%)</span><span class="text-red-400">− ₹69.93</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Collection Fee</span><span class="text-red-400">− ₹40.00</span></div>
+              <div class="mt-2 flex justify-between border-t border-gray-800 pt-2"><span class="font-semibold text-white">Net Payout</span><span class="font-bold text-green-400">₹889.07</span></div>
+              <div class="flex justify-between text-xs"><span class="text-gray-600">Effective fee rate</span><span class="text-gray-500">11.0%</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-gray-500">
+          For a ₹999 electronics product, Amazon India gives ₹5 more per order. At 500 orders/month that's ₹2,500 extra — before GST on fees and fulfilment costs are factored in.
+        </p>
+      </section>
+
+      <!-- When to choose which -->
+      <section>
+        <h2 class="mb-6 text-2xl font-bold text-white">Which Platform Should You Choose?</h2>
+        <div class="space-y-4">
+          {[
+            { emoji: '📱', title: 'Selling Mobile Phones?', body: 'Amazon India (5%) has a slight edge over Flipkart (5.5%). However, Flipkart has a strong mobile buyer base — many sellers do well on both. Test with the same SKU on both and compare conversion.' },
+            { emoji: '👗', title: 'Selling Fashion & Clothing?', body: 'Amazon (15%) is significantly cheaper than Flipkart (20%). Unless your brand has a specific Flipkart audience, Amazon is the better choice for margins in fashion.' },
+            { emoji: '💻', title: 'Selling Electronics & Gadgets?', body: 'Flipkart (7%) beats Amazon (8%) by 1 percentage point. On high-ticket items like laptops and tablets, this can add up to thousands per month.' },
+            { emoji: '🏠', title: 'Selling Home & Kitchen?', body: 'Amazon (9%) is cheaper than Flipkart (10%). Both platforms have strong home categories — but Amazon\'s lower fee makes it the default choice for most home product sellers.' },
+            { emoji: '🔁', title: 'Want maximum reach?', body: 'List on both. Most high-volume sellers operate across Amazon, Flipkart, and Meesho simultaneously to maximise reach. Use our calculators to model your net payout on each platform before pricing.' },
+          ].map((item) => (
+            <div class="flex gap-4 rounded-xl border border-gray-800 bg-gray-900 p-5">
+              <span class="shrink-0 text-2xl">{item.emoji}</span>
+              <div>
+                <h3 class="mb-1 font-semibold text-white">{item.title}</h3>
+                <p class="text-sm leading-relaxed text-gray-400">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section>
+        <h2 class="mb-6 text-2xl font-bold text-white">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {faqSchema.mainEntity.map((faq) => (
+            <details class="group rounded-xl border border-gray-800 bg-gray-900 p-5">
+              <summary class="flex cursor-pointer items-center justify-between font-medium text-white">
+                {faq.name}
+                <span class="ml-4 shrink-0 text-gray-500 transition-transform group-open:rotate-180">▼</span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-400">{faq.acceptedAnswer.text}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <a href="/fees/amazon-india-electronics-seller-fee-calculator"
+          class="group flex items-center justify-between rounded-xl border border-orange-500/20 bg-orange-500/5 p-5 transition-all hover:bg-orange-500/10">
+          <div>
+            <p class="text-xs text-orange-400">Calculate</p>
+            <p class="mt-0.5 font-semibold text-white">Amazon India Fee Calculator</p>
+          </div>
+          <span class="text-orange-400 transition-colors group-hover:text-orange-300">→</span>
+        </a>
+        <a href="/fees/flipkart-electronics-seller-fee-calculator"
+          class="group flex items-center justify-between rounded-xl border border-blue-500/20 bg-blue-500/5 p-5 transition-all hover:bg-blue-500/10">
+          <div>
+            <p class="text-xs text-blue-400">Calculate</p>
+            <p class="mt-0.5 font-semibold text-white">Flipkart Fee Calculator</p>
+          </div>
+          <span class="text-blue-400 transition-colors group-hover:text-blue-300">→</span>
+        </a>
+      </section>
+
+    </article>
+  </main>
+</BaseLayout>

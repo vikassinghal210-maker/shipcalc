@@ -8,7 +8,8 @@ const surfaceItems = data.filter((d) => d.transportMode === 'Surface');
 
 const amazonItems   = marketplace.filter((m) => m.platformName === 'Amazon India');
 const flipkartItems = marketplace.filter((m) => m.platformName === 'Flipkart');
-const otherItems    = marketplace.filter((m) => !['Amazon India', 'Flipkart'].includes(m.platformName));
+const meeshoItems   = marketplace.filter((m) => m.platformName === 'Meesho');
+const otherItems    = marketplace.filter((m) => !['Amazon India', 'Flipkart', 'Meesho'].includes(m.platformName));
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -212,6 +213,26 @@ const faqSchema = {
         </div>
       </div>
 
+      <!-- Meesho -->
+      <div class="mb-8">
+        <h3 class="mb-4 flex items-center gap-2 text-lg font-bold text-white">
+          <span class="rounded-lg border border-green-500/20 bg-green-500/10 px-3 py-1 text-sm text-green-400">🎉 Meesho — 0% Commission</span>
+        </h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {meeshoItems.map((item) => (
+            <a href={`/fees/${item.slug}`}
+              class="group rounded-xl border border-gray-800 bg-gray-900 p-5 transition-all duration-200 hover:border-green-500/40 hover:bg-gray-800">
+              <div class="mb-3 flex items-center justify-between">
+                <span class="text-sm font-semibold text-white">{item.category}</span>
+                <span class="rounded-full border border-green-500/20 bg-green-500/10 px-2 py-0.5 text-xs font-bold text-green-400">0%</span>
+              </div>
+              <p class="mb-3 text-xs leading-relaxed text-gray-500 line-clamp-2">{item.metaDescription}</p>
+              <span class="text-xs text-blue-400 transition-colors group-hover:text-blue-300">Calculate →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
       <!-- Myntra & Nykaa -->
       <div>
         <h3 class="mb-4 flex items-center gap-2 text-lg font-bold text-white">
@@ -237,6 +258,7 @@ const faqSchema = {
     <!-- Blog -->
     <section class="mb-16">
       <h2 class="mb-6 text-xl font-bold text-white">Shipping Resources</h2>
+      <div class="space-y-4">
       <a
         href="/blog/what-is-volumetric-weight"
         class="group flex items-center justify-between rounded-xl border border-gray-800 bg-gray-900 p-6 transition-all duration-200 hover:border-blue-500/40 hover:bg-gray-800"
@@ -248,6 +270,18 @@ const faqSchema = {
         </div>
         <span class="ml-6 shrink-0 text-blue-400 transition-colors group-hover:text-blue-300">Read →</span>
       </a>
+      <a
+        href="/blog/amazon-vs-flipkart-seller-fees"
+        class="group flex items-center justify-between rounded-xl border border-gray-800 bg-gray-900 p-6 transition-all duration-200 hover:border-orange-500/40 hover:bg-gray-800"
+      >
+        <div>
+          <span class="mb-2 inline-block rounded-full border border-orange-500/20 bg-orange-500/10 px-2 py-0.5 text-xs text-orange-400">Comparison</span>
+          <h3 class="mt-1 font-semibold text-white">Amazon India vs Flipkart Seller Fees: Complete Comparison 2025</h3>
+          <p class="mt-1 text-sm text-gray-500">Category-by-category fee breakdown to help you pick the right platform.</p>
+        </div>
+        <span class="ml-6 shrink-0 text-blue-400 transition-colors group-hover:text-blue-300">Read →</span>
+      </a>
+      </div>
     </section>
 
     <!-- FAQ Section -->
