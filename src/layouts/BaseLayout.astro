@@ -24,6 +24,7 @@ const canonicalUrl = canonicalSlug ? `${siteUrl}/calculator/${canonicalSlug}` : 
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="google-site-verification" content="a0meCe5auYBGC_oC_GCXTC2sLTS8L8nnzJgJIBxS1YU" />
+    <slot name="head" />
   </head>
   <body class="min-h-screen bg-gray-950 font-sans text-gray-100 antialiased">
 

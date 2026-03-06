@@ -133,5 +133,86 @@
     "h1Title": "FedEx Ground Surface Volumetric Weight Calculator",
     "metaDescription": "Calculate FedEx Ground dimensional weight using the 5000 cm³/kg divisor. Find the exact chargeable weight for your FedEx ground and home delivery parcels.",
     "seoParagraph": "FedEx Ground and FedEx Home Delivery services apply a dimensional weight divisor of 5000 cm³/kg (equivalent to 139 cubic inches per pound in imperial units) for all ground shipments. Shippers must calculate (L × W × H in cm) ÷ 5000 to obtain the volumetric weight and compare it with the actual package weight. FedEx charges the greater of the two, a practice known as billable weight, which significantly impacts logistics costs for high-volume ground shippers."
+  },
+  {
+    "slug": "ecom-express-surface-volumetric-weight-calculator",
+    "courierName": "Ecom Express",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Ecom Express Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Ecom Express Surface dimensional weight using the 4000 divisor. Find your exact chargeable weight for Ecom Express ground shipments across India.",
+    "seoParagraph": "Ecom Express, one of India's largest e-commerce-focused logistics providers, uses a volumetric divisor of 4000 for all its surface mode shipments. Online sellers can calculate dimensional weight as (L × W × H in cm) ÷ 4000 and compare it against the actual package weight to find the chargeable weight. Ecom Express bills the higher of the two values, making it essential for D2C brands to optimise their packaging dimensions before booking surface shipments."
+  },
+  {
+    "slug": "ecom-express-air-volumetric-weight-calculator",
+    "courierName": "Ecom Express",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Ecom Express Air Volumetric Weight Calculator",
+    "metaDescription": "Compute Ecom Express Air dimensional weight using the 5000 divisor. Instantly find your chargeable weight for Ecom Express air express shipments in India.",
+    "seoParagraph": "Ecom Express applies the standard domestic air divisor of 5000 cm³/kg for all air express shipments processed through its network. The dimensional weight is calculated using the formula (L × W × H in cm) ÷ 5000, and the chargeable weight is the higher of this figure or the package's actual dead weight. For e-commerce sellers shipping lightweight but bulky products via Ecom Express Air, understanding this calculation is critical to forecasting accurate logistics costs."
+  },
+  {
+    "slug": "shiprocket-surface-volumetric-weight-calculator",
+    "courierName": "Shiprocket",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Shiprocket Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Shiprocket Surface dimensional weight using the 4000 divisor. Perfect for D2C brands using Shiprocket to ship ground parcels across India.",
+    "seoParagraph": "Shiprocket, India's leading e-commerce shipping aggregator, applies a volumetric divisor of 4000 when billing surface-mode shipments to its merchants. The chargeable weight is determined by computing (L × W × H in cm) ÷ 4000 and comparing the result against the actual package weight. D2C sellers and SMEs using Shiprocket's ground shipping services should always verify dimensional weight upfront to avoid weight discrepancy charges on their Shiprocket dashboard."
+  },
+  {
+    "slug": "shiprocket-air-volumetric-weight-calculator",
+    "courierName": "Shiprocket",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Shiprocket Air Volumetric Weight Calculator",
+    "metaDescription": "Instantly calculate Shiprocket Air dimensional weight with the 5000 divisor. Avoid weight discrepancy charges on your Shiprocket shipments.",
+    "seoParagraph": "Shiprocket uses a volumetric divisor of 5000 for all air express shipments routed through its platform, regardless of which underlying courier partner fulfils the order. Sellers must calculate (L × W × H in cm) ÷ 5000 and ensure their declared dimensions are accurate to avoid costly weight discrepancy (WD) charges. Accurate dimensional weight input at the time of order creation on Shiprocket is essential for maintaining healthy profit margins for online sellers."
+  },
+  {
+    "slug": "gati-kwe-surface-volumetric-weight-calculator",
+    "courierName": "Gati KWE",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Gati KWE Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Gati KWE Surface dimensional weight using the 4000 divisor. Find chargeable weight for Gati ground and express surface shipments in India.",
+    "seoParagraph": "Gati KWE, one of India's oldest and most trusted logistics companies, uses a volumetric divisor of 4000 for surface-mode domestic shipments. To determine the chargeable weight, compute (L × W × H in cm) ÷ 4000 and compare it to the actual weight of the consignment. Gati KWE applies the higher of the two values as the billable weight, a standard industry practice used across all surface freight carriers in India."
+  },
+  {
+    "slug": "gati-kwe-air-volumetric-weight-calculator",
+    "courierName": "Gati KWE",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Gati KWE Air Express Volumetric Weight Calculator",
+    "metaDescription": "Calculate Gati KWE Air Express dimensional weight using the 5000 divisor. Get your exact chargeable weight for Gati air freight shipments across India.",
+    "seoParagraph": "Gati KWE's air express services use a volumetric divisor of 5000 cm³/kg, consistent with the standard adopted across domestic air freight in India. Shippers can calculate dimensional weight as (L × W × H in cm) ÷ 5000 and compare it against the package's actual weight. Gati KWE charges the higher of the two, and businesses shipping time-sensitive goods via Gati Air should account for this calculation when quoting landed costs to their customers."
+  },
+  {
+    "slug": "aramex-international-air-volumetric-weight-calculator",
+    "courierName": "Aramex",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Aramex International Air Volumetric Weight Calculator",
+    "metaDescription": "Calculate Aramex international dimensional weight using the 5000 divisor. Find chargeable weight for Aramex cross-border air express shipments.",
+    "seoParagraph": "Aramex, a leading global logistics provider, uses a volumetric weight divisor of 5000 cm³/kg for all international air express shipments. Cross-border e-commerce sellers shipping via Aramex can calculate dimensional weight as (L × W × H in cm) ÷ 5000 and compare it to the actual parcel weight. Aramex bills the higher of the two values, and exporters from India shipping to the Middle East, Africa, and other Aramex-strong markets should incorporate this calculation into their cost models."
+  },
+  {
+    "slug": "smartr-logistics-air-volumetric-weight-calculator",
+    "courierName": "Smartr Logistics",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Smartr Logistics Air Volumetric Weight Calculator",
+    "metaDescription": "Calculate Smartr Logistics Air dimensional weight using the 5000 divisor. Accurate chargeable weight for Smartr air express e-commerce shipments.",
+    "seoParagraph": "Smartr Logistics, a technology-driven e-commerce courier, applies a volumetric divisor of 5000 for its air express delivery services across India. The dimensional weight is calculated as (L × W × H in cm) ÷ 5000 and compared against the actual package weight to determine the chargeable weight. E-commerce brands using Smartr Logistics for fast air delivery should verify dimensional weight at the time of shipment booking to avoid unexpected billing adjustments."
+  },
+  {
+    "slug": "india-post-speed-post-air-volumetric-weight-calculator",
+    "courierName": "India Post",
+    "transportMode": "Air",
+    "divisor": 6000,
+    "h1Title": "India Post Speed Post Air Volumetric Weight Calculator",
+    "metaDescription": "Calculate India Post Speed Post dimensional weight using the IATA 6000 divisor. Find chargeable weight for Speed Post air parcels and EMS shipments.",
+    "seoParagraph": "India Post Speed Post and EMS (Express Mail Service) international shipments use the IATA standard volumetric divisor of 6000 cm³/kg, which is higher than the 5000 divisor used by private couriers. To calculate dimensional weight, divide (L × W × H in cm) by 6000 and compare it against the actual weight of your parcel. India Post charges the higher value as the chargeable weight, and this distinction makes India Post a cost-effective option for dense, heavy parcels where actual weight exceeds the volumetric weight."
   }
 ]

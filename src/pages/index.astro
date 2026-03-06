@@ -4,12 +4,71 @@ import data from '../data/data.json';
 
 const airItems     = data.filter((d) => d.transportMode === 'Air');
 const surfaceItems = data.filter((d) => d.transportMode === 'Surface');
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is volumetric weight in shipping?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Volumetric weight (also called dimensional weight) is a pricing technique used by couriers to account for the space a package occupies. It is calculated by multiplying the length, width, and height of the package in centimetres and dividing by a courier-specific divisor (typically 4000 or 5000). The courier charges the higher of the volumetric weight or the actual physical weight.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between a 4000 and 5000 divisor?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A divisor of 4000 is typically used for surface (ground) shipments, while 5000 is standard for air express shipments in India. A lower divisor means the volumetric weight will be higher for the same package size, making surface shipments relatively more expensive for bulky lightweight parcels compared to air shipments.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which Indian couriers use a 4000 divisor?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most Indian couriers use a divisor of 4000 for surface shipments, including Delhivery, BlueDart, DTDC, Xpressbees, Ekart Logistics, Ecom Express, Shiprocket, and Gati KWE. This is the standard domestic ground freight divisor across India.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I calculate chargeable weight for a shipment?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'To calculate chargeable weight: (1) Measure your package dimensions in centimetres. (2) Multiply Length × Width × Height to get the cubic volume. (3) Divide by your courier\'s divisor (e.g. 5000 for air, 4000 for surface) to get the volumetric weight. (4) Compare with the actual dead weight of the package. The higher of the two is your chargeable (billable) weight.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why does FedEx use a 5000 divisor for ground shipments?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'FedEx Ground uses a divisor of 5000 cm³/kg (equivalent to 139 cubic inches per pound in imperial units) for its ground shipments. This is higher than the 4000 divisor used by most Indian couriers, making FedEx Ground relatively more forgiving for bulky lightweight packages compared to Indian surface couriers.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What divisor does India Post Speed Post use?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'India Post Speed Post and EMS international shipments use the IATA standard divisor of 6000 cm³/kg, which is higher than the 5000 used by private express couriers. This makes India Post a cost-effective option for dense, heavy parcels where actual weight consistently exceeds volumetric weight.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout
   title="Free Shipping Volumetric Weight Calculators — ShipCalc"
   description="Instantly calculate dimensional weight for Delhivery, BlueDart, FedEx, DHL, UPS and more. Free online calculators for Air and Surface couriers."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
   <main class="mx-auto max-w-6xl px-4 py-16">
 
     <!-- Hero -->
@@ -79,7 +138,7 @@ const surfaceItems = data.filter((d) => d.transportMode === 'Surface');
     </section>
 
     <!-- How it works -->
-    <section class="rounded-2xl border border-gray-800 bg-gray-900 p-8 text-center">
+    <section class="mb-16 rounded-2xl border border-gray-800 bg-gray-900 p-8 text-center">
       <h2 class="mb-2 text-xl font-bold text-white">How Volumetric Weight Works</h2>
       <p class="mb-8 text-gray-400">Couriers charge the higher of actual weight vs. dimensional weight.</p>
       <div class="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-3">
@@ -91,13 +150,33 @@ const surfaceItems = data.filter((d) => d.transportMode === 'Surface');
         <div>
           <div class="mb-3 text-3xl">➗</div>
           <h3 class="mb-1 font-semibold text-white">Divide</h3>
-          <p class="text-sm text-gray-500">Divide the cubic volume by your courier's divisor (4000 or 5000).</p>
+          <p class="text-sm text-gray-500">Divide the cubic volume by your courier's divisor (4000, 5000, or 6000).</p>
         </div>
         <div>
           <div class="mb-3 text-3xl">⚡</div>
           <h3 class="mb-1 font-semibold text-white">Compare</h3>
           <p class="text-sm text-gray-500">The higher of volumetric vs. actual weight is your billable weight.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-8">
+      <h2 class="mb-8 text-center text-2xl font-bold text-white">
+        Frequently Asked Questions
+      </h2>
+      <div class="mx-auto max-w-3xl space-y-4">
+        {faqSchema.mainEntity.map((faq) => (
+          <details class="group rounded-xl border border-gray-800 bg-gray-900 p-5">
+            <summary class="flex cursor-pointer items-center justify-between font-medium text-white">
+              {faq.name}
+              <span class="ml-4 shrink-0 text-gray-500 transition-transform group-open:rotate-180">▼</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-gray-400">
+              {faq.acceptedAnswer.text}
+            </p>
+          </details>
+        ))}
       </div>
     </section>
 
