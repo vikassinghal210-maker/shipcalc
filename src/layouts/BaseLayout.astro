@@ -25,6 +25,14 @@ const canonicalUrl = canonicalSlug ? `${siteUrl}/calculator/${canonicalSlug}` : 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="google-site-verification" content="a0meCe5auYBGC_oC_GCXTC2sLTS8L8nnzJgJIBxS1YU" />
     <slot name="head" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-23SXBSN1BX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-23SXBSN1BX');
+    </script>
   </head>
   <body class="min-h-screen bg-gray-950 font-sans text-gray-100 antialiased">
 
