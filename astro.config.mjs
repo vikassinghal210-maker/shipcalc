@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://shipcalc.vercel.app', // Update this after your first Vercel deploy
+  site: 'https://shipcalc-ten.vercel.app',
   vite: {
     plugins: [tailwindcss()],
   },
