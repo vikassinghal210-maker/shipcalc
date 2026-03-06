@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalSlug?: string;
+}
+
+const { title, description, canonicalSlug } = Astro.props;
+const siteUrl = import.meta.env.SITE ?? 'https://shipcalc.vercel.app';
+const canonicalUrl = canonicalSlug ? `${siteUrl}/calculator/${canonicalSlug}` : siteUrl;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="min-h-screen bg-gray-950 font-sans text-gray-100 antialiased">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/80 backdrop-blur-md">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        <a href="/" class="flex items-center gap-2 text-xl font-bold text-white">
+          <span class="text-blue-400">⚡</span> ShipCalc
+        </a>
+        <nav class="hidden gap-6 text-sm text-gray-400 md:flex">
+          <a href="/" class="transition-colors hover:text-white">All Calculators</a>
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-800">
+      <div class="mx-auto max-w-6xl px-4 py-6 text-center text-sm text-gray-600">
+        &copy; {new Date().getFullYear()} ShipCalc &mdash; For reference only. Always verify rates
+        directly with your courier partner.
+      </div>
+    </footer>
+
+  </body>
+</html>

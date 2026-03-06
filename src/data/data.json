@@ -1,0 +1,137 @@
+[
+  {
+    "slug": "delhivery-surface-volumetric-weight-calculator",
+    "courierName": "Delhivery",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Delhivery Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Delhivery Surface dimensional weight instantly. Use divisor 4000 to find your chargeable weight and avoid surprise shipping bills.",
+    "seoParagraph": "Delhivery applies a volumetric divisor of 4000 for all surface (ground) shipments across India. To calculate dimensional weight, multiply the package length, width, and height in centimetres, then divide the result by 4000 to get the volumetric weight in kilograms. Delhivery then charges based on whichever is higher — the actual dead weight or the calculated volumetric weight."
+  },
+  {
+    "slug": "delhivery-air-volumetric-weight-calculator",
+    "courierName": "Delhivery",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Delhivery Air Volumetric Weight Calculator",
+    "metaDescription": "Instantly calculate Delhivery Air Express dimensional weight using the 5000 divisor. Find your chargeable weight before booking your shipment.",
+    "seoParagraph": "For all air express shipments, Delhivery uses the standard domestic air divisor of 5000. The dimensional weight is computed by multiplying the package's L x W x H in centimetres and dividing the total by 5000. The chargeable weight billed to the shipper is the greater of the actual weight or the volumetric weight calculated using this formula."
+  },
+  {
+    "slug": "bluedart-surface-volumetric-weight-calculator",
+    "courierName": "BlueDart",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "BlueDart Surface Volumetric Weight Calculator",
+    "metaDescription": "Use our BlueDart Surface calculator with the 4000 divisor to find the exact chargeable weight for your Dart Surface shipments across India.",
+    "seoParagraph": "BlueDart's Dart Surface service uses a volumetric divisor of 4000 for domestic ground shipments. Shippers must calculate dimensional weight by dividing the cubic volume (L×W×H in cm) by 4000 and compare it against the actual weight. BlueDart bills the higher of the two weights, making it essential to optimise packaging to reduce volumetric weight."
+  },
+  {
+    "slug": "bluedart-air-volumetric-weight-calculator",
+    "courierName": "BlueDart",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "BlueDart Air Express Volumetric Weight Calculator",
+    "metaDescription": "Calculate BlueDart Air Express dimensional weight with the 5000 divisor. Get your chargeable weight instantly and plan your logistics costs.",
+    "seoParagraph": "BlueDart applies a divisor of 5000 for its Dart Air and Dart Apex air express services operating within India. The volumetric weight formula — (L × W × H) / 5000 — determines whether a package is billed by its physical or dimensional weight. As a DHL group company, BlueDart aligns its air divisor with global express standards to ensure consistent chargeable weight calculations."
+  },
+  {
+    "slug": "dtdc-surface-volumetric-weight-calculator",
+    "courierName": "DTDC",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "DTDC Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate DTDC Surface dimensional weight using the 4000 divisor. Determine your exact chargeable weight for DTDC ground shipments in India.",
+    "seoParagraph": "DTDC uses a volumetric divisor of 4000 for all surface mode shipments sent via its domestic ground network. Sellers and shippers can determine the dimensional weight by computing (Length × Width × Height in cm) ÷ 4000. DTDC compares this figure against the package's actual weight and charges the higher value, which is the industry-standard practice for all surface couriers."
+  },
+  {
+    "slug": "dtdc-air-volumetric-weight-calculator",
+    "courierName": "DTDC",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "DTDC Air Express Volumetric Weight Calculator",
+    "metaDescription": "Find your DTDC Air Express chargeable weight using the 5000 dimensional weight divisor. Fast, accurate volumetric weight calculation for air shipments.",
+    "seoParagraph": "For its air express category shipments, DTDC applies the standard volumetric divisor of 5000. The formula (L × W × H in cm) / 5000 yields the dimensional weight, which is then compared to the actual gross weight of the package. DTDC charges the higher of the two to account for the cargo space a lightweight but bulky package occupies on an aircraft."
+  },
+  {
+    "slug": "xpressbees-surface-volumetric-weight-calculator",
+    "courierName": "Xpressbees",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Xpressbees Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Xpressbees Surface dimensional weight with the 4000 divisor. Perfect for D2C brands and e-commerce sellers shipping via Xpressbees ground.",
+    "seoParagraph": "Xpressbees applies a volumetric divisor of 4000 across all its surface logistics shipments in India, a standard adopted by most domestic ground couriers. E-commerce sellers can calculate dimensional weight by multiplying package dimensions in centimetres and dividing by 4000 to get volumetric kilograms. The chargeable weight is then determined as the maximum of this volumetric weight and the actual dead weight."
+  },
+  {
+    "slug": "xpressbees-air-volumetric-weight-calculator",
+    "courierName": "Xpressbees",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "Xpressbees Air Volumetric Weight Calculator",
+    "metaDescription": "Instantly compute Xpressbees Air dimensional weight using divisor 5000. Ideal for e-commerce sellers calculating chargeable weight for air shipments.",
+    "seoParagraph": "For air mode shipments, Xpressbees uses the 5000 cc/kg divisor to calculate dimensional weight on all domestic air parcels. The formula is straightforward: multiply your package's length, width, and height in centimetres, divide by 5000, and compare the result to the actual weight. Xpressbees bills the higher value, so optimising your box size is critical for reducing air freight costs."
+  },
+  {
+    "slug": "shadowfax-surface-volumetric-weight-calculator",
+    "courierName": "Shadowfax",
+    "transportMode": "Surface",
+    "divisor": 5000,
+    "h1Title": "Shadowfax Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Shadowfax dimensional weight using the 5000 divisor for surface shipments. Determine your exact chargeable weight for e-commerce deliveries.",
+    "seoParagraph": "Shadowfax, a tech-first logistics provider focused on e-commerce, applies a volumetric divisor of 5000 even for its surface shipments, which is slightly higher than the 4000 used by traditional ground couriers. Shippers must calculate (L × W × H in cm) ÷ 5000 and compare it against actual weight. Understanding this distinction is important for D2C brands that ship bulky, lightweight products through the Shadowfax network."
+  },
+  {
+    "slug": "ekart-surface-volumetric-weight-calculator",
+    "courierName": "Ekart Logistics",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "Ekart Logistics Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate Ekart Logistics dimensional weight with the 4000 divisor. Essential for Flipkart sellers to estimate surface shipment chargeable weight.",
+    "seoParagraph": "Ekart Logistics, the supply chain arm of Flipkart, uses a volumetric divisor of 4000 for surface-mode shipments processed through its network. The dimensional weight is calculated as (L × W × H in cm) / 4000 and is compared to the physical weight of the parcel. Flipkart marketplace sellers in particular need to be aware of this calculation to accurately forecast their logistics fee deductions."
+  },
+  {
+    "slug": "fedex-international-air-volumetric-weight-calculator",
+    "courierName": "FedEx",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "FedEx International Air Volumetric Weight Calculator",
+    "metaDescription": "Calculate FedEx International Priority dimensional weight using the 5000 cc/kg divisor. Accurately estimate chargeable weight for global air shipments.",
+    "seoParagraph": "FedEx International Priority and International Economy air services use a dimensional weight divisor of 5000 cm³/kg for metric calculations worldwide. To find dimensional weight, compute (Length × Width × Height in cm) ÷ 5000 and compare the result against the shipment's actual weight. FedEx charges the higher of the two values, and this applies to all non-document international air express parcels shipped globally."
+  },
+  {
+    "slug": "dhl-express-international-air-volumetric-weight-calculator",
+    "courierName": "DHL Express",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "DHL Express International Volumetric Weight Calculator",
+    "metaDescription": "Compute DHL Express international dimensional weight using the 5000 divisor. Get your exact chargeable weight for DHL Worldwide Express shipments.",
+    "seoParagraph": "DHL Express applies a volumetric weight divisor of 5000 cm³/kg for all international express air shipments, consistent with the metric standard used across the global courier industry. Exporters and importers can calculate dimensional weight as (L × W × H in cm) / 5000 and DHL will charge whichever is higher — dimensional or actual weight. Accurate calculation is vital to avoid billing discrepancies on international DHL Express invoices."
+  },
+  {
+    "slug": "ups-international-air-volumetric-weight-calculator",
+    "courierName": "UPS",
+    "transportMode": "Air",
+    "divisor": 5000,
+    "h1Title": "UPS International Air Volumetric Weight Calculator",
+    "metaDescription": "Use our UPS International Air calculator with the 5000 divisor to find dimensional chargeable weight for UPS Worldwide Express and Expedited shipments.",
+    "seoParagraph": "UPS uses a dimensional weight divisor of 5000 cm³/kg for international air express services including UPS Worldwide Express, Expedited, and Saver. The dimensional weight is determined by the formula (L × W × H in cm) ÷ 5000, and UPS will bill the greater of this figure or the actual shipment weight. Cross-border e-commerce sellers using UPS should always verify dimensional weight to avoid unexpected surcharges on their final invoices."
+  },
+  {
+    "slug": "dhl-ecommerce-surface-volumetric-weight-calculator",
+    "courierName": "DHL eCommerce",
+    "transportMode": "Surface",
+    "divisor": 4000,
+    "h1Title": "DHL eCommerce Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate DHL eCommerce Surface dimensional weight using the 4000 divisor. Ideal for online sellers shipping domestically via DHL eCommerce solutions.",
+    "seoParagraph": "DHL eCommerce, distinct from DHL Express, offers last-mile delivery solutions for e-commerce businesses and applies a divisor of 4000 for its surface-mode domestic shipments. The volumetric weight is computed as (L × W × H in cm) ÷ 4000 and compared against the actual package weight to determine the chargeable weight. Online sellers using DHL eCommerce for bulk domestic fulfilment should optimise their packaging dimensions to keep volumetric weight below actual weight wherever possible."
+  },
+  {
+    "slug": "fedex-ground-surface-volumetric-weight-calculator",
+    "courierName": "FedEx",
+    "transportMode": "Surface",
+    "divisor": 5000,
+    "h1Title": "FedEx Ground Surface Volumetric Weight Calculator",
+    "metaDescription": "Calculate FedEx Ground dimensional weight using the 5000 cm³/kg divisor. Find the exact chargeable weight for your FedEx ground and home delivery parcels.",
+    "seoParagraph": "FedEx Ground and FedEx Home Delivery services apply a dimensional weight divisor of 5000 cm³/kg (equivalent to 139 cubic inches per pound in imperial units) for all ground shipments. Shippers must calculate (L × W × H in cm) ÷ 5000 to obtain the volumetric weight and compare it with the actual package weight. FedEx charges the greater of the two, a practice known as billable weight, which significantly impacts logistics costs for high-volume ground shippers."
+  }
+]

@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import data from '../../data/data.json';
+
+export async function getStaticPaths() {
+  return data.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { courierName, transportMode, divisor, h1Title, metaDescription, seoParagraph, slug } = item;
+---
+
+<BaseLayout title={`${h1Title} | ShipCalc`} description={metaDescription} canonicalSlug={slug}>
+  <main class="mx-auto max-w-4xl px-4 py-12">
+
+    <!-- Breadcrumb -->
+    <nav class="mb-6 flex items-center gap-2 text-sm text-gray-500">
+      <a href="/" class="transition-colors hover:text-gray-300">Home</a>
+      <span>›</span>
+      <span class="text-gray-300">{courierName} {transportMode}</span>
+    </nav>
+
+    <!-- Page Title Block -->
+    <div class="mb-10">
+      <div class="mb-4 flex flex-wrap gap-2">
+        <span class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400">
+          {courierName}
+        </span>
+        <span class={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${transportMode === 'Air' ? 'border-purple-500/20 bg-purple-500/10 text-purple-400' : 'border-green-500/20 bg-green-500/10 text-green-400'}`}>
+          {transportMode === 'Air' ? '✈ Air' : '🚛 Surface'}
+        </span>
+        <span class="inline-flex items-center rounded-full border border-gray-700 bg-gray-700/50 px-3 py-1 text-xs font-medium text-gray-400">
+          Divisor: {divisor}
+        </span>
+      </div>
+      <h1 class="text-3xl font-bold leading-tight text-white md:text-4xl">{h1Title}</h1>
+      <p class="mt-3 text-lg text-gray-400">
+        Enter your package dimensions to instantly calculate the volumetric and billable weight.
+      </p>
+    </div>
+
+    <!-- CALCULATOR CARD -->
+    <div class="mb-12 overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 shadow-2xl">
+
+      <!-- Card chrome bar -->
+      <div class="flex items-center gap-2 border-b border-gray-800 bg-gradient-to-r from-blue-600/10 to-purple-600/10 px-6 py-4">
+        <span class="h-3 w-3 rounded-full bg-red-400/80"></span>
+        <span class="h-3 w-3 rounded-full bg-yellow-400/80"></span>
+        <span class="h-3 w-3 rounded-full bg-green-400/80"></span>
+        <span class="ml-3 font-mono text-sm text-gray-500">
+          {courierName} &middot; {transportMode} &middot; divisor {divisor}
+        </span>
+      </div>
+
+      <div class="p-6 md:p-8">
+
+        <!-- Input Row -->
+        <div class="mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div>
+            <label for="length" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">Length</label>
+            <div class="relative">
+              <input type="number" id="length" placeholder="0" min="0" step="0.1"
+                class="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 pr-10 text-lg font-medium text-white placeholder-gray-600 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500">cm</span>
+            </div>
+          </div>
+          <div>
+            <label for="width" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">Width</label>
+            <div class="relative">
+              <input type="number" id="width" placeholder="0" min="0" step="0.1"
+                class="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 pr-10 text-lg font-medium text-white placeholder-gray-600 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500">cm</span>
+            </div>
+          </div>
+          <div>
+            <label for="height" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">Height</label>
+            <div class="relative">
+              <input type="number" id="height" placeholder="0" min="0" step="0.1"
+                class="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 pr-10 text-lg font-medium text-white placeholder-gray-600 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500">cm</span>
+            </div>
+          </div>
+          <div>
+            <label for="physicalWeight" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-400">Dead Weight</label>
+            <div class="relative">
+              <input type="number" id="physicalWeight" placeholder="0" min="0" step="0.01"
+                class="w-full rounded-xl border border-gray-700 bg-gray-800 px-4 py-3 pr-10 text-lg font-medium text-white placeholder-gray-600 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500">kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formula Strip -->
+        <div class="mb-6 flex flex-wrap items-center justify-center gap-2 rounded-xl bg-gray-800/60 px-4 py-3 font-mono text-sm text-gray-400">
+          <span>Volumetric Weight</span>
+          <span class="text-gray-600">=</span>
+          <span class="text-gray-200">(L &times; W &times; H)</span>
+          <span class="text-gray-600">&divide;</span>
+          <span class="font-bold text-blue-400">{divisor}</span>
+        </div>
+
+        <!-- Results Grid -->
+        <div id="results" class="grid grid-cols-1 gap-4 opacity-40 transition-opacity duration-300 md:grid-cols-3">
+          <div class="rounded-xl border border-gray-700 bg-gray-800 p-5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Volumetric Weight</p>
+            <p class="text-3xl font-bold text-white"><span id="volWeight">—</span></p>
+            <p class="mt-1 text-xs text-gray-500">kg</p>
+          </div>
+          <div class="rounded-xl border border-gray-700 bg-gray-800 p-5">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Physical Weight</p>
+            <p class="text-3xl font-bold text-white"><span id="physDisplay">—</span></p>
+            <p class="mt-1 text-xs text-gray-500">kg</p>
+          </div>
+          <div id="billableCard" class="rounded-xl border border-blue-500/30 bg-blue-600/10 p-5">
+            <p id="billableLabel" class="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-400">⚡ Billable Weight</p>
+            <p class="text-3xl font-bold"><span id="billableWeight" class="text-blue-300">—</span></p>
+            <p class="mt-1 text-xs text-gray-500">kg</p>
+          </div>
+        </div>
+
+        <!-- Verdict Banner -->
+        <div id="verdict" class="hidden"></div>
+
+      </div>
+    </div>
+
+    <!-- SEO PARAGRAPH -->
+    <div class="mb-12 rounded-2xl border border-gray-800 bg-gray-900 p-6 md:p-8">
+      <h2 class="mb-3 text-lg font-semibold text-white">
+        How {courierName} Calculates Dimensional Weight
+      </h2>
+      <p class="leading-relaxed text-gray-400">{seoParagraph}</p>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="mb-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div class="rounded-xl border border-gray-800 bg-gray-900 p-5">
+        <div class="mb-2 text-2xl">📐</div>
+        <h3 class="mb-1 text-sm font-semibold text-white">Divisor Used</h3>
+        <p class="text-sm text-gray-400">
+          This calculator uses the {courierName} official divisor of
+          <span class="font-bold text-white">{divisor}</span> for {transportMode} shipments.
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-800 bg-gray-900 p-5">
+        <div class="mb-2 text-2xl">⚖️</div>
+        <h3 class="mb-1 text-sm font-semibold text-white">Billable Weight Rule</h3>
+        <p class="text-sm text-gray-400">
+          You are always charged the <span class="font-bold text-white">higher</span> of physical
+          weight vs. volumetric weight. Pack tight to save costs.
+        </p>
+      </div>
+      <div class="rounded-xl border border-gray-800 bg-gray-900 p-5">
+        <div class="mb-2 text-2xl">💡</div>
+        <h3 class="mb-1 text-sm font-semibold text-white">Pro Tip</h3>
+        <p class="text-sm text-gray-400">
+          Reduce dead air space in packaging. A snug fit lowers volumetric weight and directly cuts
+          your {courierName} shipping bill.
+        </p>
+      </div>
+    </div>
+
+  </main>
+</BaseLayout>
+
+<script define:vars={{ divisor }}>
+  const ids = ['length', 'width', 'height', 'physicalWeight'];
+
+  function calculate() {
+    const l    = parseFloat(document.getElementById('length').value)         || 0;
+    const w    = parseFloat(document.getElementById('width').value)          || 0;
+    const h    = parseFloat(document.getElementById('height').value)         || 0;
+    const phys = parseFloat(document.getElementById('physicalWeight').value) || 0;
+
+    const resultsEl  = document.getElementById('results');
+    const verdictEl  = document.getElementById('verdict');
+    const billableEl = document.getElementById('billableCard');
+    const labelEl    = document.getElementById('billableLabel');
+    const weightEl   = document.getElementById('billableWeight');
+
+    if (l <= 0 || w <= 0 || h <= 0 || phys <= 0) {
+      resultsEl.classList.add('opacity-40');
+      verdictEl.classList.add('hidden');
+      document.getElementById('volWeight').textContent   = '—';
+      document.getElementById('physDisplay').textContent = '—';
+      weightEl.textContent                               = '—';
+      return;
+    }
+
+    const vol      = (l * w * h) / divisor;
+    const billable = Math.max(vol, phys);
+    const volWins  = vol > phys;
+
+    resultsEl.classList.remove('opacity-40');
+    document.getElementById('volWeight').textContent   = vol.toFixed(2);
+    document.getElementById('physDisplay').textContent = phys.toFixed(2);
+    weightEl.textContent                               = billable.toFixed(2);
+
+    if (volWins) {
+      billableEl.className = 'rounded-xl border border-orange-500/30 bg-orange-500/10 p-5';
+      labelEl.className    = 'mb-2 text-xs font-semibold uppercase tracking-wider text-orange-400';
+      weightEl.className   = 'text-3xl font-bold text-orange-300';
+      verdictEl.className  = 'mt-5 flex items-start gap-3 rounded-xl border border-orange-500/20 bg-orange-500/10 px-5 py-4 text-sm text-orange-300';
+      verdictEl.innerHTML  = '<span class="mt-0.5 text-base">⚠️</span><span><strong>Volumetric weight is higher.</strong> You will be billed on dimensional weight. Consider reducing package dimensions.</span>';
+    } else {
+      billableEl.className = 'rounded-xl border border-blue-500/30 bg-blue-600/10 p-5';
+      labelEl.className    = 'mb-2 text-xs font-semibold uppercase tracking-wider text-blue-400';
+      weightEl.className   = 'text-3xl font-bold text-blue-300';
+      verdictEl.className  = 'mt-5 flex items-start gap-3 rounded-xl border border-green-500/20 bg-green-500/10 px-5 py-4 text-sm text-green-300';
+      verdictEl.innerHTML  = '<span class="mt-0.5 text-base">✅</span><span><strong>Physical weight is higher.</strong> You will be billed on actual weight. Your packaging is efficient!</span>';
+    }
+
+    verdictEl.classList.remove('hidden');
+  }
+
+  ids.forEach((id) => document.getElementById(id).addEventListener('input', calculate));
+</script>
